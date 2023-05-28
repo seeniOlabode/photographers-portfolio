@@ -1,13 +1,29 @@
 <template>
-  <site-loader />
+  <site-header />
+  <image-gallery @toggle-gallery="galleryOpen = !galleryOpen" />
+  <site-services />
 </template>
 
 <script>
-import SiteLoader from "./components/SiteLoader.vue";
+import SiteHeader from "./components/SiteHeader.vue";
+import SiteServices from "./components/SiteServices.vue";
+import ImageGallery from "./components/ImageGallery.vue";
 
 export default {
   components: {
-    SiteLoader,
+    SiteHeader,
+    SiteServices,
+    ImageGallery,
+  },
+  provide() {
+    return {
+      getGalleryOpen: () => this.galleryOpen,
+    };
+  },
+  data() {
+    return {
+      galleryOpen: false,
+    };
   },
 };
 </script>
@@ -26,5 +42,6 @@ export default {
   height: 100vh;
   width: 100vw;
   color: white;
+  font-family: Helvetica, Arial, sans-serif;
 }
 </style>

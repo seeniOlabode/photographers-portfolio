@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "browserslist": "last 2 versions",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,10 +11,14 @@
   },
   "dependencies": {
     "gsap": "^3.11.5",
+    "postcss-import": "^15.1.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "postcss": "^8.4.23",
+    "postcss-autoreset": "^3.0.4",
+    "postcss-normalize": "^10.0.1",
     "vite": "^4.3.2"
   }
 }
