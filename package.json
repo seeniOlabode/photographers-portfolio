@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "gsap": "^3.11.5",
+    "postcss-calc": "^9.0.1",
+    "postcss-for": "^2.1.1",
     "postcss-import": "^15.1.0",
     "vue": "^3.2.47"
   },

@@ -56,17 +56,25 @@ export class artistName {
         let word2Y = word1.getBoundingClientRect().top - word2.getBoundingClientRect().top;
         let word2X = word1.getBoundingClientRect().width + 20;
 
-        this.expandAnimations = gsap.timeline({ paused: true })
+        this.expandAnimations = gsap.timeline({ paused: true });
+        this.expandAnimations.addLabel('start')
         .to(this.el, {
             scale: 0.5, 
             duration: 0.8,
-        }) 
+        }, "start") 
         .to(this.words[1], {
             y: word2Y,
             x: word2X,
             duration: 0.8,
             ease: "power1.out"
-        }, "<")
+        }, "start")
+        .to(document.querySelectorAll('.social-list .social-inner-wrapper'), {
+            yPercent: -150,
+        }, 'start')
+        .to(document.querySelector('.link-list'), {
+            xPercent: 150,
+        }, 'start')
+            
     }
 
     openGallery() {

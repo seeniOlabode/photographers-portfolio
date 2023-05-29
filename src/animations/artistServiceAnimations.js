@@ -27,14 +27,14 @@ export class artistService {
     }
 
     setExpandAnimation() {
-        this.expandAnimation = gsap.timeline({ paused: true })
+        this.expandAnimation = gsap.timeline({ paused: true})
 
         this.expandAnimation.to([...this.header.querySelectorAll('.word-inner-wrapper'), this.el.querySelectorAll('.service-inner-wrapper')], {
             yPercent: -150,
             duration: 0.8,
             stagger: {
                 amount: 0.3,
-                ease: "power1.out",
+                ease: "power3.inOut"
             }
         })
     }

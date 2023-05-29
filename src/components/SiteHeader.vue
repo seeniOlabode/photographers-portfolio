@@ -25,6 +25,29 @@
         </span>
       </span>
     </h1>
+
+    <h5 class="project-name" v-show="loaded">Portfolio 22’ - 23’</h5>
+
+    <ul class="social-list" v-show="loaded">
+      <li
+        class="social"
+        v-for="social in socials"
+        :key="social + 'artist-social'"
+      >
+        <span class="social-inner-wrapper">{{ social }}</span>
+      </li>
+    </ul>
+
+    <ul class="link-list" v-show="loaded">
+      <li
+        class="link"
+        v-for="(link, i) in links"
+        :key="link + i"
+        :class="{ 'gal-selected': galleryOpen }"
+      >
+        {{ link }}
+      </li>
+    </ul>
   </header>
 </template>
 
@@ -36,11 +59,14 @@ let artistNameAnimations;
 export default {
   components: {},
   inject: ["getGalleryOpen"],
+  emits: ["loaded"],
   data() {
     return {
       nameWords: ["alan", "cospen"],
       allChars: "01234567890abcdefghijklmnopqrstuvwxyz",
       loaded: false,
+      socials: ["Instagram", "Pinterest", "Twitter", "unsplash", "Email"],
+      links: ["Home", "about", "gallery", "contact me"],
     };
   },
   computed: {
@@ -54,6 +80,7 @@ export default {
   mounted() {
     artistNameAnimations = new artistName(this.$refs.artistNameEl);
     artistNameAnimations.init(() => {
+      this.$emit("loaded");
       this.loaded = true;
     });
   },
@@ -76,6 +103,9 @@ export default {
   padding: 50px;
   position: relative;
   z-index: 10;
+  display: flex;
+  align-items: start;
+  gap: 200px;
 }
 
 .artist-name {
@@ -113,6 +143,55 @@ export default {
   display: flex;
   flex-direction: column;
   top: 0;
+}
+
+.project-name {
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+
+.social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.social {
+  overflow: hidden;
+}
+
+.social-inner-wrapper {
+  text-transform: uppercase;
+  display: inline-block;
+  color: #8a8a8a;
+}
+
+.link-list {
+  text-transform: uppercase;
+  color: #8a8a8a;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.link-list .link:last-child {
+  color: white;
+}
+
+.link:nth-child(1):not(.gal-selected) {
+  background: white;
+  color: black;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.gal-selected:nth-child(3) {
+  background: white;
+  color: black;
+  width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 /* END SITE HEADER STYLES */

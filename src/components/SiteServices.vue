@@ -57,8 +57,8 @@ export default {
 <style scoped>
 .services-container {
   position: absolute;
-  right: 214px;
-  bottom: 100px;
+  right: 100px;
+  bottom: 50px;
 }
 
 .service-header {
